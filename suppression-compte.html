@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080c18"><meta name="description" content="Contacter l'éditeur de l'application ZAPIKI."><title>Supprimer son compte — ZAPIKI</title>
+<link rel="stylesheet" href="styles.css"><link rel="icon" type="image/svg+xml" href="favicon.svg"></head><body>
+<header><nav class="wrap" aria-label="Navigation principale"><a class="brand" href="index.html"><span>Z</span>APIKI</a>
+<div class="links"><a href="index.html">Accueil</a><a href="lecteur.html">Le lecteur</a><a href="confidentialite.html">Confidentialité</a><a href="conditions.html">Conditions</a><a href="contact.html">Contact</a><a href="suppression-compte.html">Supprimer un compte</a></div></nav></header>
+
+<main class="wrap"><article class="legal">
+<h1>Supprimer mon compte ZAPIKI</h1>
+<p>La suppression efface définitivement votre identité ZAPIKI et vos données cloud : favoris, historiques synchronisés, préférences, progression, droits d'abonnement et sessions actives.</p>
+<div class="notice"><p>Cette opération est <strong>irréversible</strong>. Vos playlists et identifiants de fournisseur enregistrés localement ne seront pas effacés. Un abonnement Google Play doit être résilié séparément.</p></div>
+<section id="login">
+<h2>1. Identifiez-vous</h2>
+<button type="button" class="btn primary" id="google">Connexion avec Google</button>
+<p>Ou connectez-vous avec votre mot de passe ZAPIKI :</p>
+<form id="password-login" class="deletion-form">
+<label for="email">Adresse e-mail</label><input id="email" type="email" autocomplete="email" required>
+<label for="password">Mot de passe ZAPIKI</label><input id="password" type="password" autocomplete="current-password" required>
+<button class="btn ghost" type="submit">Se connecter</button>
+</form></section>
+<section id="confirmation" hidden>
+<h2>2. Confirmez la suppression</h2><p>Compte connecté : <strong id="identity"></strong></p>
+<form id="delete-form" class="deletion-form">
+<label for="typed-email">Recopiez exactement l'e-mail de votre compte</label>
+<input type="email" id="typed-email" autocomplete="off" required>
+<label class="confirm-row"><input type="checkbox" id="ack" required> Je comprends que mon compte et les données cloud associées seront définitivement supprimés.</label>
+<button class="btn danger" type="submit" id="delete" disabled>Supprimer définitivement mon compte</button>
+<button class="btn ghost" id="logout" type="button">Annuler et me déconnecter</button>
+</form></section>
+<p id="status" role="status" aria-live="polite"></p>
+<h2>Faire une demande par e-mail</h2>
+<p>Vous pouvez aussi demander la suppression à <a href="mailto:gogostudio87@gmail.com?subject=Demande%20suppression%20compte%20ZAPIKI">gogostudio87@gmail.com</a> depuis l'adresse associée à votre compte. Une vérification d'identité pourra être demandée. Ne transmettez jamais votre mot de passe, vos identifiants IPTV ou un code de validation.</p>
+<p>La suppression est également disponible dans l'application : <strong>Réglages → Compte ZAPIKI → Supprimer mon compte</strong>.</p>
+<p><a href="confidentialite.html">Politique de confidentialité</a> · <a href="contact.html">Assistance</a></p>
+</article></main><footer><div class="wrap inner"><p>© 2026 ZAPIKI · Lecteur multimédia indépendant</p><div class="links"><a href="lecteur.html">Le lecteur</a><a href="suppression-compte.html">Supprimer un compte</a><a href="confidentialite.html">Confidentialité</a><a href="conditions.html">Conditions d’utilisation</a><a href="contact.html">Contact</a></div></div></footer>
+<script type="module">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const supa=createClient("https://bavlabincpxalexqpeta.supabase.co","sb_publishable_jNvks5F3lq0BeG-ZNxA7qw_WJcToxpR",{auth:{detectSessionInUrl:true,flowType:"pkce",persistSession:true}});
+const id=name=>document.getElementById(name);
+const say=t=>{id("status").textContent=t};
+let user=null;
+function setUser(u){user=u;id("confirmation").hidden=!u;id("login").hidden=!!u;id("identity").textContent=u?.email||"";id("typed-email").value="";id("ack").checked=false;validate()}
+function validate(){id("delete").disabled=!user||id("typed-email").value.trim()!==user.email||!id("ack").checked}
+id("typed-email").addEventListener("input",validate);id("ack").addEventListener("change",validate);
+id("password-login").addEventListener("submit",async e=>{e.preventDefault();say("Connexion en cours…");const {data,error}=await supa.auth.signInWithPassword({email:id("email").value.trim(),password:id("password").value});id("password").value="";if(error){say("Connexion impossible : "+error.message);return}setUser(data.user);say("Compte identifié : veuillez confirmer uniquement si vous voulez le supprimer.")});
+id("google").addEventListener("click",async()=>{say("Connexion Google…");const {error}=await supa.auth.signInWithOAuth({provider:"google",options:{redirectTo:new URL("suppression-compte.html",location.href).href}});if(error)say("Connexion impossible : "+error.message)});
+id("logout").addEventListener("click",async()=>{await supa.auth.signOut();setUser(null);say("Déconnecté. Aucune donnée supprimée.")});
+id("delete-form").addEventListener("submit",async e=>{e.preventDefault();if(!user||id("delete").disabled)return;const typed=id("typed-email").value.trim();id("delete").disabled=true;say("Suppression en cours…");try{const {data,error}=await supa.rpc("zapiki_delete_own_account",{p_email:typed,p_confirmation:"DELETE"});if(error||data!==true){say("Suppression non confirmée. "+(error?.message||"Veuillez réessayer."));validate();return}await supa.auth.signOut().catch(()=>{});setUser(null);id("google").disabled=true;say("Compte ZAPIKI et données cloud supprimés définitivement.")}catch(e){say("Erreur : "+e.message);validate()}});
+supa.auth.getUser().then(({data})=>{if(data?.user)setUser(data.user)}).catch(e=>say("Session indisponible : "+e.message));
+supa.auth.onAuthStateChange((event,session)=>{if(event==="SIGNED_IN"&&session?.user)setUser(session.user);if(event==="SIGNED_OUT")setUser(null)});
+</script>
+</body></html>

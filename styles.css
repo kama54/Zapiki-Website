@@ -19,3 +19,13 @@ h1{font-size:clamp(2.35rem,6vw,4.45rem);letter-spacing:-.055em;line-height:1.12;
 .legal{max-width:830px;margin:60px auto 85px}.legal h1{font-size:clamp(2rem,5vw,3rem)}.legal h2{font-size:1.2rem;margin:30px 0 9px}.legal p,.legal li{color:#c9d1e2}.legal li{margin-bottom:9px}.legal .date{font-size:.88rem;color:var(--muted)}
 footer{border-top:1px solid var(--border);padding:29px 0}footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px}footer p{margin:0;color:var(--muted);font-size:.85rem}footer .links{display:flex;flex-wrap:wrap;gap:16px}footer a{font-size:.87rem}
 @media(max-width:700px){nav{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr;padding-bottom:45px}.hero{padding:64px 0 52px}.card{min-height:unset}.legal{margin:38px auto 60px}}
+
+.deletion-form{display:flex;flex-direction:column;gap:12px;max-width:520px;margin:20px 0 30px}
+.deletion-form input:not([type="checkbox"]){width:100%;padding:13px 14px;border-radius:9px;background:#15192a;border:1px solid #66647e;color:#fff;font:inherit}
+.deletion-form label{color:var(--text);font-weight:600}
+.deletion-form .confirm-row{display:flex;align-items:flex-start;gap:12px;font-weight:400}
+.deletion-form .confirm-row input{margin-top:7px;flex:none;min-width:18px;min-height:18px}
+button.btn{font:inherit;cursor:pointer;border:1px solid #6c6688}
+button.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.danger{background:#a62e4b;color:#fff;border-color:#c56a80}
+#status{padding:10px 0;min-height:40px;color:#f7c7d6}
