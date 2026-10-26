@@ -116,13 +116,30 @@
     set('label[for="password"]',d.password);
     set('#password-login button[type="submit"]',d.signin);
     set("#confirmation h2",d.confirmTitle);
-    set("#confirmation > p",d.connected);
+    const confirmationLabel=main.querySelector("#confirmation > p");
+    if (confirmationLabel && confirmationLabel.firstChild && confirmationLabel.firstChild.nodeType===Node.TEXT_NODE)
+      confirmationLabel.firstChild.textContent=d.connected+" ";
     set('label[for="typed-email"]',d.typeEmail);
-    set('.confirm-row',d.ack);
+    const ackLabel=main.querySelector(".confirm-row");
+    if (ackLabel) {
+      const checkbox=ackLabel.querySelector("input");
+      if (checkbox) ackLabel.replaceChildren(checkbox, document.createTextNode(" "+d.ack));
+    }
     set("#delete",d.delete);
     set("#logout",d.cancel);
-    const subHead = [...main.querySelectorAll("h2")].find(el => /Faire une demande|request|solicitud/i.test(el.textContent));
-    if(subHead) subHead.textContent=d.request;
+    const subHead=main.querySelector("article > h2:last-of-type");
+    if(subHead) {
+      subHead.textContent=d.request;
+      const requestText=subHead.nextElementSibling;
+      if(requestText) requestText.innerHTML=escapeHtml(d.requestIntro||"")+
+        ' <a href="mailto:gogostudio87@gmail.com?subject=ZAPIKI%20account%20deletion">gogostudio87@gmail.com</a> '+
+        escapeHtml(d.requestSafety||"");
+      const appNote=requestText?.nextElementSibling;
+      if(appNote) appNote.textContent=d.appNote||"";
+      const related=appNote?.nextElementSibling;
+      if(related) related.innerHTML=anchor("confidentialite.html",(dictionary.nav||frenchUI)[2])+
+        " · "+anchor("contact.html",(dictionary.nav||frenchUI)[4]);
+    }
     window.ZAPIKI_DELETE_MESSAGES=d.messages||{};
   }
   function applyLocale(data) {
@@ -137,7 +154,10 @@
     else if(page==="signalement.html" && p.report) main.innerHTML=reportPage(p.report);
     else if(page==="suppression-compte.html" && p.delete) deletionPage(p.delete);
     else if(p[page]) main.innerHTML=sectionsPage(p[page]);
-    document.title=(p[page]?.title||p.home?.title||"ZAPIKI")+" — ZAPIKI";
+    const mappedPage = page==="index.html"?"home":
+      page==="contact.html"?"contact":page==="signalement.html"?"report":
+      page==="suppression-compte.html"?"delete":page;
+    document.title=(p[mappedPage]?.title||"ZAPIKI")+" — ZAPIKI";
   }
   if(lang==="fr") applyLocale(frenchFallback);
   else {
