@@ -37,16 +37,17 @@
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const supa=createClient("https://bavlabincpxalexqpeta.supabase.co","sb_publishable_jNvks5F3lq0BeG-ZNxA7qw_WJcToxpR",{auth:{detectSessionInUrl:true,flowType:"pkce",persistSession:true}});
 const id=name=>document.getElementById(name);
-const say=t=>{id("status").textContent=t};
+const say=message=>{id("status").textContent=message};
+const t=(key,fallback)=>window.ZAPIKI_DELETE_MESSAGES?.[key]||fallback;
 let user=null;
 function setUser(u){user=u;id("confirmation").hidden=!u;id("login").hidden=!!u;id("identity").textContent=u?.email||"";id("typed-email").value="";id("ack").checked=false;validate()}
 function validate(){id("delete").disabled=!user||id("typed-email").value.trim()!==user.email||!id("ack").checked}
 id("typed-email").addEventListener("input",validate);id("ack").addEventListener("change",validate);
-id("password-login").addEventListener("submit",async e=>{e.preventDefault();say("Connexion en cours…");const {data,error}=await supa.auth.signInWithPassword({email:id("email").value.trim(),password:id("password").value});id("password").value="";if(error){say("Connexion impossible : "+error.message);return}setUser(data.user);say("Compte identifié : veuillez confirmer uniquement si vous voulez le supprimer.")});
-id("google").addEventListener("click",async()=>{say("Connexion Google…");const {error}=await supa.auth.signInWithOAuth({provider:"google",options:{redirectTo:new URL("suppression-compte.html",location.href).href}});if(error)say("Connexion impossible : "+error.message)});
-id("logout").addEventListener("click",async()=>{await supa.auth.signOut();setUser(null);say("Déconnecté. Aucune donnée supprimée.")});
-id("delete-form").addEventListener("submit",async e=>{e.preventDefault();if(!user||id("delete").disabled)return;const typed=id("typed-email").value.trim();id("delete").disabled=true;say("Suppression en cours…");try{const {data,error}=await supa.rpc("zapiki_delete_own_account",{p_email:typed,p_confirmation:"DELETE"});if(error||data!==true){say("Suppression non confirmée. "+(error?.message||"Veuillez réessayer."));validate();return}await supa.auth.signOut().catch(()=>{});setUser(null);id("google").disabled=true;say("Compte ZAPIKI et données cloud supprimés définitivement.")}catch(e){say("Erreur : "+e.message);validate()}});
-supa.auth.getUser().then(({data})=>{if(data?.user)setUser(data.user)}).catch(e=>say("Session indisponible : "+e.message));
+id("password-login").addEventListener("submit",async e=>{e.preventDefault();say(t("login","Connexion en cours…"));const {data,error}=await supa.auth.signInWithPassword({email:id("email").value.trim(),password:id("password").value});id("password").value="";if(error){say(t("loginFailed","Connexion impossible : ")+error.message);return}setUser(data.user);say(t("confirmNotice","Compte identifié : veuillez confirmer uniquement si vous voulez le supprimer."))});
+id("google").addEventListener("click",async()=>{say(t("google","Connexion Google…"));const {error}=await supa.auth.signInWithOAuth({provider:"google",options:{redirectTo:new URL("suppression-compte.html",location.href).href}});if(error)say(t("loginFailed","Connexion impossible : ")+error.message)});
+id("logout").addEventListener("click",async()=>{await supa.auth.signOut();setUser(null);say(t("signedOut","Déconnecté. Aucune donnée supprimée."))});
+id("delete-form").addEventListener("submit",async e=>{e.preventDefault();if(!user||id("delete").disabled)return;const typed=id("typed-email").value.trim();id("delete").disabled=true;say(t("deleting","Suppression en cours…"));try{const {data,error}=await supa.rpc("zapiki_delete_own_account",{p_email:typed,p_confirmation:"DELETE"});if(error||data!==true){say(t("deleteFailed","Suppression non confirmée. Veuillez réessayer.")+" "+(error?.message||""));validate();return}await supa.auth.signOut().catch(()=>{});setUser(null);id("google").disabled=true;say(t("deleted","Compte ZAPIKI et données cloud supprimés définitivement."))}catch(e){say(t("error","Erreur : ")+e.message);validate()}});
+supa.auth.getUser().then(({data})=>{if(data?.user)setUser(data.user)}).catch(e=>say(t("sessionUnavailable","Session indisponible : ")+e.message));
 supa.auth.onAuthStateChange((event,session)=>{if(event==="SIGNED_IN"&&session?.user)setUser(session.user);if(event==="SIGNED_OUT")setUser(null)});
 </script>
 </body></html>
