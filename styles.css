@@ -72,3 +72,27 @@ html[dir="rtl"] nav .links,html[dir="rtl"] footer .links{direction:rtl}
 @media(max-width:470px){.z-language summary{min-width:65px;padding:10px 8px}.z-mobilemenu summary{width:42px;height:43px}.z-header-controls{gap:7px}.z-hero h1{font-size:clamp(39px,10.9vw,52px)}.z-hero-actions{display:grid;grid-template-columns:1fr}.z-button{width:100%}.z-feature-grid{grid-template-columns:1fr}.z-feature-card{min-height:0}.z-shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.z-shot-media{height:215px;padding:9px;border-radius:16px}.z-shot-inner{padding:8px;gap:10px}.z-shot-inner img{height:42px;width:42px}.z-shot-inner span{font-size:10px}.z-shot-caption{gap:8px}.z-shot-caption h3{font-size:12px}.z-plan{padding:26px}.z-art-bar b{font-size:8px}.z-art-panel{padding:8px}.z-source-graphic>span{font-size:9px}}
 html[dir="rtl"] .z-hero,html[dir="rtl"] .z-source-inner{text-align:right}html[dir="rtl"] .z-art-app{left:auto;right:-16px}html[dir="rtl"] .z-art-bar b{margin-left:0;margin-right:auto}html[dir="rtl"] .z-language-list,html[dir="rtl"] .z-mobilemenu>div{right:auto;left:0}html[dir="rtl"] .z-header-controls{direction:ltr}html[dir="rtl"] .z-footer nav{direction:rtl}
 @media(prefers-reduced-motion:reduce){.z-site *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* Native-language ZAPIKI promotional visuals. No cropping; tap to view at full resolution. */
+.z-cinema-feature{margin-block:0 90px;position:relative;overflow:hidden;border-radius:27px;border:1px solid #ffffff24;background:#1a1228;box-shadow:0 22px 65px #0004}
+.z-cinema-feature>img{display:block;width:100%;height:auto;object-fit:contain;aspect-ratio:1024 / 500}
+.z-cinema-feature figcaption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,#060616e0,#06061600);font-size:11px;padding:25px 21px 12px;color:#f5e5ff;text-align:center}
+.z-promo-section .z-heading{max-width:870px}
+.z-promo-gallery{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(225px,285px);overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-inline:4px;gap:20px;padding:5px 5px 25px;scrollbar-width:thin;scrollbar-color:#e077b36f #201329}
+.z-promo-slide{display:block;min-width:0;scroll-snap-align:start;border:1px solid #ffffff37;border-radius:21px;text-decoration:none!important;background:#1a0e28;box-shadow:0 12px 39px #0006;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.z-promo-slide:hover{transform:translateY(-4px);box-shadow:0 20px 45px #0009}
+.z-promo-slide img{display:block;width:100%;height:auto;aspect-ratio:820 / 1457;object-fit:contain}
+.z-promo-slide-label{display:flex;gap:12px;align-items:center;padding:14px 16px;color:#f8ebfd;background:linear-gradient(90deg,#23122c,#171326);font-size:14px;font-weight:750}
+.z-promo-slide-label b{color:#f992c5;font-size:11px;letter-spacing:.12em}
+.z-promo-slide-label span{margin-inline-start:auto;color:#cdb8e0}
+.z-promo-slide:focus-visible{outline:3px solid #ffbbdf;outline-offset:4px}
+@media(max-width:720px){
+  .z-cinema-feature{margin-block:0 35px;border-radius:17px}
+  .z-cinema-feature figcaption{font-size:9px;padding:22px 8px 8px}
+  .z-promo-gallery{grid-auto-columns:minmax(210px,72vw);gap:13px;margin-inline:-4px}
+  .z-promo-slide{border-radius:17px}
+  .z-promo-slide-label{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.z-promo-slide{transition:none}}
+html[dir="rtl"] .z-promo-gallery{direction:rtl}
