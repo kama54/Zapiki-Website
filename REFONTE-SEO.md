@@ -11,17 +11,20 @@ Cette branche contient une proposition de nouvelle vitrine premium.
 - SEO : titres, descriptions, URLs canoniques, hreflang réciproques, Open Graph, balisage SoftwareApplication.
 - FAQ, liens internes, responsive smartphone et TV, RTL arabe et réduction des animations.
 
-## Captures réelles à recevoir avant publication
-Il manque les captures officielles de l'application. Ne pas inventer de captures ni modifier les images provenant de l'application.
+## Visuels promotionnels fournis et intégrés à la structure
 
-Merci de fournir, idéalement sans identifiants ni URLs de fournisseurs réels :
-- direct-android.webp — chaînes en Direct sur smartphone (portrait)
-- films-series.webp — section Films/Séries sur smartphone (portrait)
-- lecture-epg.webp — lecteur et guide des programmes (portrait ou paysage)
-- android-tv.webp — accueil/navigation Android TV (16:9)
+- 7 visuels fournis par langue (accueil, Direct, catégories, films, séries, favoris, réglages), soit 70 au total.
+- WebP optimisés à 820 pixels de large maximum, sans recadrage ni déformation.
+- Dossier japonais `jp` converti en `ja`, coréen `kr` en `ko`.
+- Galerie déroulante sur mobile, avec ouverture de chaque image en grand.
+- Ces créations promotionnelles ne sont PAS présentées comme des captures brutes.
 
-Les 4 cartes de la section « ZAPIKI en images » affichent pour l'instant un emplacement explicite en attendant les fichiers.
-Les visuels ne doivent pas exposer d'identifiants Xtream, tokens, adresses privées ni données personnelles.
+**En attente du seul fichier `assets/zapiki-visuels-webp.zip` (7,1 Mo)**.
+Le ZIP doit être déposé sur la branche `design/zapiki-premium-seo-20261108`.
+
+Le script de publication sur la branche `seo/zapiki-locales-sitemap-20261108`
+du dépôt GoGoStudio-Website décompresse automatiquement les 70 images et
+l'illustration cinéma. Ne pas fusionner avant dépôt des images et vérification.
 
 ## Publication
 NE PAS fusionner dans main avant validation visuelle, réception des vraies captures et vérifications SEO.
