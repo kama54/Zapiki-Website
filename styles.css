@@ -156,3 +156,58 @@ html[dir="rtl"] .z-promo-gallery{direction:rtl}
   .z-lb-prev{left:3px}.z-lb-next{right:3px}
   .z-lb-top{padding:7px 10px}.z-lb-close{width:36px;height:36px}
 }
+
+
+/* Editorial guides, November 2026: 10 language versions and mobile-first reading. */
+.z-guide-header-link{color:#f5c5e7!important;text-decoration:none;font-size:13px;font-weight:800;border:1px solid #ffffff30;border-radius:13px;padding:10px 17px}
+.z-guide-header-link:hover{background:#ffffff10}
+.z-guide-page{background:radial-gradient(ellipse at 80% 0,#43204d61,transparent 40%),#090917;min-height:100vh}
+.z-site .z-guide-main{max-width:1120px;padding-block:40px 95px}
+.z-guide-breadcrumb{display:flex;align-items:center;gap:9px;flex-wrap:wrap;color:#d4bfdc;font-size:12px;margin:0 0 50px}
+.z-guide-breadcrumb a{color:#f2c2e0;text-decoration:none}
+.z-guide-breadcrumb span:last-child{opacity:.75;max-width:min(600px,90vw);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.z-guide-article{max-width:850px}
+.z-guide-article h1,.z-guides-hub h1{font-size:clamp(35px,5vw,68px);line-height:1.16;letter-spacing:-.045em;font-weight:820;margin:0 0 27px;overflow-wrap:break-word}
+.z-guide-lead{font-size:clamp(18px,2.1vw,23px);font-weight:510;color:#eaddee;line-height:1.75;max-width:870px;margin:0 0 40px}
+.z-guide-text{max-width:790px}
+.z-guide-text h2{font-size:clamp(24px,3vw,36px);line-height:1.28;letter-spacing:-.035em;margin:48px 0 18px}
+.z-guide-text>p{color:#c9bed4;font-size:16px;line-height:1.9;margin:0 0 20px}
+.z-guide-text ol{padding-inline-start:29px;margin:18px 0 40px}
+.z-guide-text li{padding:5px 0 11px 9px;color:#eaddf0;font-size:16px;line-height:1.78}
+.z-guide-text li::marker{font-weight:800;color:#ef90c8}
+.z-guide-highlight{background:linear-gradient(130deg,#32203a,#171327);border:1px solid #de7abc70;border-radius:20px;padding:24px 27px;margin:34px 0}
+.z-guide-highlight strong{display:block;color:#f5a5d2;font-size:14px;margin-bottom:10px}
+.z-guide-highlight p{font-size:16px;line-height:1.76;color:#efe0f3;margin:0}
+.z-guide-sources{border-top:1px solid #ffffff25;margin-top:45px;padding-top:10px}.z-guide-sources h2{font-size:22px}.z-guide-sources ul{padding-inline-start:22px}.z-guide-sources li{padding:4px 0}.z-guide-sources a{color:#f4b0e0}
+.z-guides-related{border-top:1px solid #ffffff27;padding-top:32px;margin-top:64px}
+.z-guides-related h2{font-size:clamp(23px,3vw,34px);margin:0 0 24px;letter-spacing:-.03em}
+.z-guides-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.z-guides-related-grid a{border:1px solid #ffffff2a;border-radius:17px;padding:19px;background:#1b1428;text-decoration:none;display:flex;flex-direction:column;gap:12px;min-height:145px}
+.z-guides-related-grid a span:first-child{font-size:12px;color:#f4aad5;font-weight:800}
+.z-guides-related-grid a strong{font-size:15px;line-height:1.55}
+.z-guides-related-grid a span:last-child{align-self:flex-end;margin-top:auto}
+.z-guide-back{margin:35px 0}.z-guide-back a{color:#f6a5d9;text-decoration:none;font-weight:780;font-size:14px}
+.z-guide-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:45px 0}
+.z-guide-card{display:flex;flex-direction:column;gap:14px;padding:28px;min-width:0;border:1px solid #ffffff28;background:linear-gradient(130deg,#28182f,#151224);border-radius:22px}
+.z-guide-num{font-size:12px;letter-spacing:.14em;font-weight:850;color:#f394c7}
+.z-guide-card h2{font-size:clamp(19px,2.1vw,27px);line-height:1.35;letter-spacing:-.033em;margin:0}
+.z-guide-card h2 a{text-decoration:none}
+.z-guide-card p{color:#cec0d8;font-size:14px;line-height:1.77;margin:0}
+.z-guide-card .z-guide-read{margin-top:auto;color:#f7addb;font-weight:800;font-size:13px;text-decoration:none}
+.z-guide-hub-note{padding-top:23px;border-top:1px solid #ffffff23;color:#baacc9;font-size:13px}
+.z-faq-guide{display:inline-flex;color:#f2a5d4!important;text-decoration:none!important;font-weight:800;font-size:14px;border-bottom:1px solid #f2a5d459;padding-bottom:2px}
+.z-faq-guide:hover{color:#fff!important}
+.z-guide-page a:focus-visible{outline:3px solid #ffafd9;outline-offset:4px}
+@media(max-width:720px){
+.z-site .z-guide-main{padding-block:27px 70px}
+.z-guide-breadcrumb{margin-bottom:33px}
+.z-guide-article h1,.z-guides-hub h1{font-size:clamp(30px,8vw,48px)}
+.z-guide-text>p,.z-guide-text li{font-size:15px}
+.z-guide-text h2{margin-top:35px}
+.z-guide-card-grid,.z-guides-related-grid{grid-template-columns:1fr;gap:13px}
+.z-guide-card{padding:22px}.z-guides-related-grid a{min-height:0;gap:8px}
+.z-guide-header-link{padding:9px 10px;font-size:11px}
+.z-brand>span{font-size:18px}
+}
+@media(max-width:380px){.z-guide-header-link{font-size:10px;padding:8px}.z-brand img{width:33px;height:33px}.z-brand>span{font-size:15px}.z-site .z-header-inner{gap:8px}}
+html[dir="rtl"] .z-guide-card-grid,html[dir="rtl"] .z-guides-related-grid{text-align:right}
