@@ -86,14 +86,14 @@
   }
   function contactPage(d) {
     return '<article class="legal"><h1>'+escapeText(d.title)+'</h1>'+
-      '<p>'+escapeText(d.intro)+'</p><div class="notice"><p><strong><a href="mailto:gogostudio87@gmail.com">gogostudio87@gmail.com</a></strong></p></div>'+
+      '<p>'+escapeText(d.intro)+'</p><div class="notice"><p><strong><a href="mailto:contact@gogostudio.app">contact@gogostudio.app</a></strong></p></div>'+
       '<p>'+escapeText(d.safety)+'</p><p>'+escapeText(d.rights)+'</p>'+
       '<p>'+anchor("confidentialite.html",(dictionary.nav||frenchUI)[2])+
       ' · '+anchor("signalement.html",(dictionary.nav||frenchUI)[6])+'</p></article>';
   }
   function reportPage(d) {
     return '<article class="legal"><h1>'+escapeText(d.title)+'</h1>'+
-      '<p>'+escapeText(d.intro)+'</p><div class="notice"><p><a href="mailto:gogostudio87@gmail.com?subject=ZAPIKI%20rights%20report">gogostudio87@gmail.com</a></p></div>'+
+      '<p>'+escapeText(d.intro)+'</p><div class="notice"><p><a href="mailto:contact@gogostudio.app?subject=ZAPIKI%20rights%20report">contact@gogostudio.app</a></p></div>'+
       '<h2>'+escapeText(d.provide)+'</h2><ul>'+(d.items||[]).map(x=>'<li>'+escapeText(x)+'</li>').join("")+'</ul>'+
       '<p>'+escapeText(d.safety)+'</p><h2>'+escapeText(d.thirdTitle)+'</h2><p>'+escapeText(d.third)+'</p>'+
       '<p>'+anchor("contact.html",(dictionary.nav||frenchUI)[4])+' · '+anchor("confidentialite.html",(dictionary.nav||frenchUI)[2])+'</p></article>';
@@ -132,7 +132,7 @@
       subHead.textContent=d.request;
       const requestText=subHead.nextElementSibling;
       if(requestText) requestText.innerHTML=escapeHtml(d.requestIntro||"")+
-        ' <a href="mailto:gogostudio87@gmail.com?subject=ZAPIKI%20account%20deletion">gogostudio87@gmail.com</a> '+
+        ' <a href="mailto:contact@gogostudio.app?subject=ZAPIKI%20account%20deletion">contact@gogostudio.app</a> '+
         escapeHtml(d.requestSafety||"");
       const appNote=requestText?.nextElementSibling;
       if(appNote) appNote.textContent=d.appNote||"";
