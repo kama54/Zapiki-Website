@@ -258,3 +258,10 @@ html[dir="rtl"] .z-guide-card-grid,html[dir="rtl"] .z-guides-related-grid{text-a
 .z-hero-guides a:hover{color:white}
 .z-hero-guides a:focus-visible{outline:3px solid #ffbbe3;outline-offset:4px}
 @media(max-width:720px){.z-hero-guides{font-size:13px;margin:13px 0 0}}
+
+/* Official APK download guidance visible on every localized homepage. */
+.z-hero-apk{margin:19px 0 0;padding:15px 18px;max-width:660px;border:1px solid #e5a6db70;border-radius:15px;background:#1b102cde;color:#f5eaf9;font-size:14px;line-height:1.65}
+.z-hero-apk a{color:#ffd8f0;font-weight:800;text-decoration:underline;text-decoration-color:#e4a4d7;text-underline-offset:4px}
+.z-hero-apk a:hover{color:#fff}
+.z-hero-apk a:focus-visible{outline:3px solid #ffbbe3;outline-offset:4px}
+@media(max-width:720px){.z-hero-apk{font-size:13px;margin:15px 0 0;padding:13px 15px}}
