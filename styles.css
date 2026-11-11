@@ -273,3 +273,19 @@ html[dir="rtl"] .z-guide-card-grid,html[dir="rtl"] .z-guides-related-grid{text-a
 .z-apk-visual-files span{font-size:13px;font-weight:800;letter-spacing:.06em;color:#f6eafa}
 .z-apk-visual-files b{font-size:10px;letter-spacing:.12em;color:#f6a5d7;background:#fb71b716;padding:6px 10px;border-radius:30px}
 @media(max-width:720px){.z-apk-section .z-source-inner{display:flex;flex-direction:column;align-items:stretch;gap:24px}.z-apk-visual{width:min(100%,420px);margin-inline:auto;padding:23px}.z-apk-visual-files{margin-top:23px}.z-apk-visual-files>div{padding:12px 14px}.z-apk-cta{width:100%}}
+
+/* Mobile APK section refinement: remove decorative file mockup, improve spacing. */
+.z-apk-section .z-apk-copy{min-width:0}
+.z-apk-section .z-apk-copy h2{overflow-wrap:break-word}
+.z-apk-section .z-apk-cta{line-height:1.4;white-space:normal}
+@media(max-width:800px){
+ .z-apk-section .z-source-inner{display:block;padding-block:65px}
+ .z-apk-section .z-apk-copy{width:100%;max-width:680px;margin-inline:auto}
+ .z-apk-section .z-apk-visual{display:none!important}
+ .z-apk-section .z-source-inner h2{font-size:clamp(30px,7.7vw,44px);line-height:1.16;margin-bottom:22px}
+ .z-apk-section .z-source-inner p:not(.z-eyebrow){font-size:16px;line-height:1.75}
+ .z-apk-section .z-chips{margin-top:25px;gap:9px}
+ .z-apk-section .z-chips span{font-size:12px;padding:9px 13px}
+ .z-apk-section .z-apk-cta{display:flex;justify-content:center;align-items:center;width:100%;min-height:56px;padding:15px 17px;margin-top:27px;font-size:14px;gap:10px}
+}
+@media(max-width:380px){.z-apk-section .z-chips span{font-size:11px;padding:8px 11px}.z-apk-section .z-apk-cta{font-size:13px}}
