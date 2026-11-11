@@ -259,9 +259,17 @@ html[dir="rtl"] .z-guide-card-grid,html[dir="rtl"] .z-guides-related-grid{text-a
 .z-hero-guides a:focus-visible{outline:3px solid #ffbbe3;outline-offset:4px}
 @media(max-width:720px){.z-hero-guides{font-size:13px;margin:13px 0 0}}
 
-/* Official APK download guidance visible on every localized homepage. */
-.z-hero-apk{margin:19px 0 0;padding:15px 18px;max-width:660px;border:1px solid #e5a6db70;border-radius:15px;background:#1b102cde;color:#f5eaf9;font-size:14px;line-height:1.65}
-.z-hero-apk a{color:#ffd8f0;font-weight:800;text-decoration:underline;text-decoration-color:#e4a4d7;text-underline-offset:4px}
-.z-hero-apk a:hover{color:#fff}
-.z-hero-apk a:focus-visible{outline:3px solid #ffbbe3;outline-offset:4px}
-@media(max-width:720px){.z-hero-apk{font-size:13px;margin:15px 0 0;padding:13px 15px}}
+/* Dedicated APK download section — same hierarchy as the source-introduction block. */
+.z-apk-section{border-top:0;background:radial-gradient(circle at 90% 43%,#6e276551,transparent 43%),linear-gradient(130deg,#101022,#1a112b)}
+.z-apk-section .z-source-inner{grid-template-columns:1.2fr .8fr}
+.z-apk-section .z-eyebrow{color:#f5abd9}
+.z-apk-cta{margin-top:28px;max-width:100%;text-align:center;gap:13px}
+.z-apk-visual{width:min(100%,405px);justify-self:center;padding:30px;border-radius:25px;background:linear-gradient(155deg,#2f1a3f,#12142c);border:1px solid #eeafd23d;box-shadow:0 23px 68px #03030f60}
+.z-apk-visual-brand{display:flex;align-items:center;gap:15px;color:white;font-size:25px;font-weight:850;letter-spacing:.055em}
+.z-apk-visual-brand img{width:54px;height:54px;object-fit:contain;border-radius:14px}
+.z-apk-visual-brand small{display:block;font-size:10px;font-weight:800;color:#eba6d8;letter-spacing:.18em;margin-top:4px}
+.z-apk-visual-files{display:grid;gap:12px;margin-top:29px}
+.z-apk-visual-files>div{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;padding:15px 17px;border-radius:13px;background:#ffffff0a;border:1px solid #ffffff25}
+.z-apk-visual-files span{font-size:13px;font-weight:800;letter-spacing:.06em;color:#f6eafa}
+.z-apk-visual-files b{font-size:10px;letter-spacing:.12em;color:#f6a5d7;background:#fb71b716;padding:6px 10px;border-radius:30px}
+@media(max-width:720px){.z-apk-section .z-source-inner{display:flex;flex-direction:column;align-items:stretch;gap:24px}.z-apk-visual{width:min(100%,420px);margin-inline:auto;padding:23px}.z-apk-visual-files{margin-top:23px}.z-apk-visual-files>div{padding:12px 14px}.z-apk-cta{width:100%}}
